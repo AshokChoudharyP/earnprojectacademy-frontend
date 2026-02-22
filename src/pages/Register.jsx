@@ -88,7 +88,7 @@ const Register = () => {
     try {
       setLoading(true);
 
-      const res = await API.post("/auth/verify-otp", {
+      const res = await API.post("/api/auth/verify-otp", {
         ...formData,
         otp,
       });
