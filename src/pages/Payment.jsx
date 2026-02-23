@@ -20,20 +20,21 @@ const Payment = () => {
   const handlePayment = async () => {
     setLoading(true);
 
-    // 1️⃣ Create order
     let orderData;
+
     try {
       const token = localStorage.getItem("token");
 
-const res = await API.post(
-  "/payments/create-order",
-  { enrollmentId },
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+      const res = await API.post(
+        "/payments/create-order",
+        { enrollmentId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
       orderData = res.data;
     } catch (err) {
       toast.error("Unable to initiate payment");
@@ -41,7 +42,6 @@ const res = await API.post(
       return;
     }
 
-    // 2️⃣ Load Razorpay
     const isLoaded = await loadRazorpay();
     if (!isLoaded) {
       toast.error("Razorpay SDK failed to load");
@@ -49,7 +49,6 @@ const res = await API.post(
       return;
     }
 
-    // 3️⃣ Open Razorpay popup
     const options = {
       key: orderData.key,
       amount: orderData.amount,
@@ -58,34 +57,46 @@ const res = await API.post(
       description: "Freelance Income Accelerator",
       order_id: orderData.orderId,
 
-    handler: async function (response) {
-  try {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = response;
+      handler: async function (response) {
+        try {
+          const {
+            razorpay_order_id,
+            razorpay_payment_id,
+            razorpay_signature,
+          } = response;
 
-    const token = localStorage.getItem("token");
+          const token = localStorage.getItem("token");
 
-    await API.post(
-      "/payments/verify",
-      {
-        razorpay_order_id,
-        razorpay_payment_id,
-        razorpay_signature,
-        enrollmentId,
+          await API.post(
+            "/payments/verify",
+            {
+              razorpay_order_id,
+              razorpay_payment_id,
+              razorpay_signature,
+              enrollmentId,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          toast.success("Payment successful 🎉");
+          navigate("/payment-success");
+        } catch (err) {
+          toast.error("Payment verification failed");
+        }
       },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
 
-    toast.success("Payment successful 🎉");
-    navigate("/payment-success");
+      theme: { color: "#4f46e5" },
+    };
 
-  } catch (err) {
-    toast.error("Payment verification failed");
-  }
-}};
+    const razorpay = new window.Razorpay(options);
+    razorpay.open();
+
+    setLoading(false);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-6">
@@ -105,6 +116,6 @@ const res = await API.post(
       </div>
     </div>
   );
-}};
+};
 
 export default Payment;
