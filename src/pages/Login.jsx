@@ -48,7 +48,7 @@ const handleLogin = async (e) => {
     setLoading(true);
 
     // 2️⃣ Call backend login API
-    const res = await API.post("/auth/login", formData);
+    const res = await API.post("/api/auth/login", formData);
 
     // 3️⃣ Safety check (important)
     if (!res.data?.token || !res.data?.user) {
