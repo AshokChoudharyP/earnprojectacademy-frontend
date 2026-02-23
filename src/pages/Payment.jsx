@@ -23,7 +23,17 @@ const Payment = () => {
     // 1️⃣ Create order
     let orderData;
     try {
-      const res = await API.post("/payments/create-order", { enrollmentId });
+      const token = localStorage.getItem("token");
+
+const res = await API.post(
+  "/payments/create-order",
+  { enrollmentId },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
       orderData = res.data;
     } catch (err) {
       toast.error("Unable to initiate payment");
@@ -51,12 +61,22 @@ const Payment = () => {
       handler: async function (response) {
         try {
           // 4️⃣ Verify payment
-          await API.post("/payments/verify", {
-            enrollmentId,
-            razorpay_payment_id: response.razorpay_payment_id,
-            razorpay_order_id: response.razorpay_order_id,
-            razorpay_signature: response.razorpay_signature,
-          });
+          const token = localStorage.getItem("token");
+
+await API.post(
+  "/payments/verify",
+  {
+    razorpay_order_id,
+    razorpay_payment_id,
+    razorpay_signature,
+    enrollmentId,
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
           toast.success("Payment successful 🎉");
           navigate("/payment-success");
