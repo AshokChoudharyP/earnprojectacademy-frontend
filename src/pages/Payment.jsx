@@ -58,40 +58,34 @@ const res = await API.post(
       description: "Freelance Income Accelerator",
       order_id: orderData.orderId,
 
-      handler: async function (response) {
-        try {
-          // 4️⃣ Verify payment
-          const token = localStorage.getItem("token");
+    handler: async function (response) {
+  try {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = response;
 
-await API.post(
-  "/payments/verify",
-  {
-    razorpay_order_id,
-    razorpay_payment_id,
-    razorpay_signature,
-    enrollmentId,
-  },
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+    const token = localStorage.getItem("token");
 
-          toast.success("Payment successful 🎉");
-          navigate("/payment-success");
-        } catch (err) {
-          toast.error("Payment verification failed");
-        }
+    await API.post(
+      "/payments/verify",
+      {
+        razorpay_order_id,
+        razorpay_payment_id,
+        razorpay_signature,
+        enrollmentId,
       },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
-      theme: { color: "#4f46e5" },
-    };
+    toast.success("Payment successful 🎉");
+    navigate("/payment-success");
 
-    const razorpay = new window.Razorpay(options);
-    razorpay.open();
-    setLoading(false);
-  };
+  } catch (err) {
+    toast.error("Payment verification failed");
+  }
+}};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-6">
@@ -111,6 +105,6 @@ await API.post(
       </div>
     </div>
   );
-};
+}};
 
 export default Payment;
