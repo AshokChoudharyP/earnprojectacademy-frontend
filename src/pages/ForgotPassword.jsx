@@ -24,7 +24,7 @@ const ForgotPassword = () => {
       setLoading(true);
 
       // 🔥 Backend route we will create later
-      await API.post("/api/auth/forgot-password", { email });
+      await API.post("/auth/forgot-password", { email });
 
       toast.success("Password reset link sent to your email");
 
