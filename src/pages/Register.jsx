@@ -60,7 +60,7 @@ const Register = () => {
     try {
       setLoading(true);
 
-      await API.post("auth/send-otp", formData);
+      await API.post("/auth/send-otp", formData);
      
 
       toast.success("OTP sent to your email");
