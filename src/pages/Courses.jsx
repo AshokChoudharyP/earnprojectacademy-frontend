@@ -49,7 +49,7 @@ const Courses = () => {
             Practical, job-focused programs designed for real earnings
           </p>
         </div>
-
+       
         {/* Courses Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {courses.map((course) => (

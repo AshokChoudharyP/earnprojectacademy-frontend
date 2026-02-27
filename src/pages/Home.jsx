@@ -1,5 +1,5 @@
 import SEO from "../components/SEO";
-
+import { Helmet } from "react-helmet-async";
 import HeroSection from "../components/HeroSection";
 import ProgramIntro from "../components/ProgramIntro";
 import VisionMission from "../components/VisionMission";
@@ -21,10 +21,36 @@ import ReferralSection from "../components/ReferralSection";
 const Home = () => {
   return (
     <>
+    <Helmet>
+  <title>EarnProjectAcademy | Learn Freelancing </title>
+  <meta
+    name="description"
+    content="Learn freelancing, build high-income skills, and get your first client. Structured training, real projects & guidance. Start your freelance career today!"
+  />
+  <meta name="keywords" content="freelancing course India, Remote high earning job and project, freelancing international projects earn online India" />
+
+  {/* Open Graph */}
+  <meta property="og:title" content="EarnProjectAcademy" />
+  <meta property="og:description" content="Learn freelancing according to your skill set" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://earnprojectacademy.com" />
+
+  <script type="application/ld+json">
+{`
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "EarnProjectAcademy",
+  "url": "https://earnprojectacademy.com",
+  "logo": "https://earnprojectacademy.com/logo.png"
+}
+`}
+</script>
+</Helmet>
       {/* ✅ SEO Component */}
       <SEO
         title="EarnProjectAcademy | Learn Freelancing & Build Real Income"
-        description="EarnProjectAcademy helps you master freelancing, web development, digital marketing, and AI skills to build sustainable income streams."
+        description="Learn high-income skills, optimize your freelancing profile, write client-winning proposals & build real projects with EarnProjectAcademy"
       />
 
       <div className="bg-gray-50 text-gray-700">

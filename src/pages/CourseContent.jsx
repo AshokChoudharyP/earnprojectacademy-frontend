@@ -101,7 +101,7 @@ const CourseContent = () => {
             </div>
           ))}
         </aside>
-
+        
         {/* MAIN CONTENT */}
         <main className="flex-1 p-8 overflow-y-auto">
           <div className="mb-6">
@@ -116,7 +116,7 @@ const CourseContent = () => {
               />
             </div>
           </div>
-
+          
           {!activeLesson ? (
             <div className="bg-white rounded-xl p-8 text-center shadow">
               <h3 className="text-xl font-semibold mb-2">
