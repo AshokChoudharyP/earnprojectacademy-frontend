@@ -33,10 +33,10 @@ const Navbar = () => {
         {/* LOGO */}
         <Link to="/" className="flex items-center gap-2 group">
           <img
-            src={logo}
-            alt="EarnProjectAcademy Logo"
-            className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
-          />
+        src="/logo.svg"
+          alt="EarnProjectAcademy Logo"
+         className="h-10"
+        />
           <span className="text-2xl font-extrabold tracking-tight text-gray-900 group-hover:text-indigo-600">
             EarnProjectAcademy
           </span>
