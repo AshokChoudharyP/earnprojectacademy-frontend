@@ -1,14 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
+import logo from "../assets/logo.png"
 
-import logo from "../assets/logo.png";
 
-<img
-  src={logo}
-  alt="EarnProjectAcademy Logo"
-  className="h-10"
-/>
+
 const Navbar = () => {
   const { user, logout } = useAuth();
   const [scrolled, setScrolled] = useState(false);
@@ -38,11 +34,13 @@ const Navbar = () => {
 
         {/* LOGO */}
         <Link to="/" className="flex items-center gap-2 group">
-          <img
-        src="/logo.svg"
-          alt="EarnProjectAcademy Logo"
-         className="h-10"
-        />
+           <nav className="...">
+      <img
+        src={logo}
+        alt="EarnProjectAcademy"
+        className="h-10 w-auto"
+      />
+    </nav>
           <span className="text-2xl font-extrabold tracking-tight text-gray-900 group-hover:text-indigo-600">
             EarnProjectAcademy
           </span>
