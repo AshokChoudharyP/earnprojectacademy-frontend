@@ -1,8 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
+
 import logo from "../assets/logo.png";
 
+<img
+  src={logo}
+  alt="EarnProjectAcademy Logo"
+  className="h-10"
+/>
 const Navbar = () => {
   const { user, logout } = useAuth();
   const [scrolled, setScrolled] = useState(false);
