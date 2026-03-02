@@ -16,7 +16,10 @@ const CourseContent = () => {
       const res = await API.get(`/course-content/${courseId}`);
       setModules(res.data.modules);
       setProgress(res.data.progress);
-
+      
+      if (res.data.enrollment?.installmentStage === 1) {
+        setModules(prev => prev.slice(0, 2));
+      }
       if (res.data.progress?.lastAccessedLesson) {
         for (const m of res.data.modules) {
           const l = m.lessons.find(
