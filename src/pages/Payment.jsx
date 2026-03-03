@@ -83,6 +83,7 @@ const Payment = () => {
               razorpay_signature: response.razorpay_signature,
               enrollmentId,
               plan: selectedPlan,
+              couponCode,
             });
 
             toast.success("Payment successful 🎉");
