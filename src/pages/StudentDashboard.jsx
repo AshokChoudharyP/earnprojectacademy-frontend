@@ -9,15 +9,20 @@ const StudentDashboard = () => {
   const [courses, setCourses] = useState([]);
   const [todayLive, setTodayLive] = useState(null);
   const [announcements, setAnnouncements] = useState([]);
-const Badge = ({ text, color }) => (
-  <span className={`text-xs px-2 py-1 rounded-full font-medium
-    ${color === "green" && "bg-green-100 text-green-700"}
-    ${color === "red" && "bg-red-100 text-red-700"}
-    ${color === "gray" && "bg-gray-200 text-gray-600"}
-  `}>
-    {text}
-  </span>
-);
+  const [enrollment, setEnrollment] = useState(null);
+
+  const Badge = ({ text, color }) => (
+    <span
+      className={`text-xs px-2 py-1 rounded-full font-medium
+      ${color === "green" && "bg-green-100 text-green-700"}
+      ${color === "red" && "bg-red-100 text-red-700"}
+      ${color === "gray" && "bg-gray-200 text-gray-600"}
+    `}
+    >
+      {text}
+    </span>
+  );
+
   useEffect(() => {
     const fetchDashboard = async () => {
       const res = await API.get("/dashboard/student");
@@ -25,14 +30,108 @@ const Badge = ({ text, color }) => (
       setTodayLive(res.data.todayLive || null);
       setAnnouncements(res.data.announcements || []);
     };
+
+    const fetchEnrollment = async () => {
+      const res = await API.get("/enrollments/my");
+      if (res.data.length > 0) {
+        setEnrollment(res.data[0]);
+      }
+    };
+
     fetchDashboard();
+    fetchEnrollment();
   }, []);
+
+  // ==============================
+  // Installment Payment Handler
+  // ==============================
+  const handleInstallmentPayment = async (enrollmentId) => {
+    try {
+      const res = await API.post("/payments/create-installment-order", {
+        enrollmentId,
+      });
+
+      const orderData = res.data;
+
+      const options = {
+        key: orderData.key,
+        amount: orderData.amount,
+        currency: orderData.currency,
+        order_id: orderData.orderId,
+        name: "EarnProjectAcademy",
+        handler: async function (response) {
+          await API.post("/payments/verify-installment", {
+            ...response,
+            enrollmentId,
+          });
+
+          window.location.reload();
+        },
+      };
+
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
+    } catch (err) {
+      alert("Installment payment failed");
+    }
+  };
 
   return (
     <StudentLayout>
       <div className="space-y-10">
 
-        {/* CONTINUE LEARNING */}
+        {/* ================= INSTALLMENT STATUS ================= */}
+        {enrollment?.paymentPlan === "INSTALLMENT" && (
+          <section className="bg-white p-6 rounded-2xl shadow">
+
+            <h2 className="text-2xl font-semibold mb-4">
+              Installment Payment Status
+            </h2>
+
+            {enrollment.isBlocked && (
+              <div className="bg-red-100 text-red-700 p-3 rounded mb-4">
+                ⚠ Your access is blocked due to unpaid installment.
+              </div>
+            )}
+
+            <div className="mb-4">
+              <p>Total Paid: ₹{enrollment.totalPaid}</p>
+              <p>Remaining: ₹{enrollment.remainingAmount}</p>
+              {enrollment.nextDueDate && (
+                <p>
+                  Next Due:{" "}
+                  {new Date(enrollment.nextDueDate).toLocaleDateString()}
+                </p>
+              )}
+            </div>
+
+            {enrollment.installmentStage === 1 && (
+              <button
+                onClick={() => handleInstallmentPayment(enrollment._id)}
+                className="bg-indigo-600 text-white px-6 py-3 rounded-lg"
+              >
+                Pay ₹10,000 Installment
+              </button>
+            )}
+
+            {enrollment.installmentStage === 2 && (
+              <button
+                onClick={() => handleInstallmentPayment(enrollment._id)}
+                className="bg-indigo-600 text-white px-6 py-3 rounded-lg"
+              >
+                Pay ₹12,000 Final Installment
+              </button>
+            )}
+
+            {enrollment.installmentStage === 3 && (
+              <div className="text-green-600 font-semibold">
+                🎉 Course Fully Paid
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* ================= CONTINUE LEARNING ================= */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">
             Continue <span className="text-indigo-600">Learning</span>
@@ -40,26 +139,26 @@ const Badge = ({ text, color }) => (
 
           {courses.length === 0 ? (
             <div className="bg-white rounded-2xl p-10 text-center shadow">
-  <h3 className="text-xl font-semibold mb-2">
-    You’re not enrolled yet
-  </h3>
-  <p className="text-gray-500 mb-6">
-    Enroll in a course to start learning 🚀
-  </p>
-  <button
-    onClick={() => navigate("/courses")}
-    className="bg-indigo-600 text-white px-6 py-3 rounded-xl"
-  >
-    Browse Courses
-  </button>
-  </div>
+              <h3 className="text-xl font-semibold mb-2">
+                You’re not enrolled yet
+              </h3>
+              <p className="text-gray-500 mb-6">
+                Enroll in a course to start learning 🚀
+              </p>
+              <button
+                onClick={() => navigate("/courses")}
+                className="bg-indigo-600 text-white px-6 py-3 rounded-xl"
+              >
+                Browse Courses
+              </button>
+            </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {courses.map(course => (
+              {courses.map((course) => (
                 <div
                   key={course._id}
                   className="bg-white rounded-2xl shadow-md hover:shadow-xl
-                     hover:-translate-y-1 transition-all duration-300 p-6"
+                  hover:-translate-y-1 transition-all duration-300 p-6"
                 >
                   <h3 className="font-semibold text-lg mb-1">
                     {course.title}
@@ -81,15 +180,15 @@ const Badge = ({ text, color }) => (
                       />
                     </div>
                   </div>
-                  
+
                   <button
                     onClick={() =>
                       navigate(`/course/${course._id}`)
                     }
                     className="bg-indigo-600 hover:bg-indigo-700
-                   hover:shadow-lg text-white px-4 py-2
-                   rounded-lg flex items-center gap-2">
-                       ▶ Resume Learning
+                    text-white px-4 py-2 rounded-lg"
+                  >
+                    ▶ Resume Learning
                   </button>
                 </div>
               ))}
@@ -97,7 +196,7 @@ const Badge = ({ text, color }) => (
           )}
         </section>
 
-        {/* TODAY'S LIVE CLASS */}
+        {/* ================= LIVE CLASS ================= */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">
             Today’s <span className="text-indigo-600">Live Class</span>
@@ -123,15 +222,15 @@ const Badge = ({ text, color }) => (
               >
                 Join Live Class
               </a>
-              <div className="flex items-center gap-2 mb-2">
-               <Badge text="LIVE" color="red" />
-          <Badge text="WEEKEND ONLY" color="gray" />
-</div>
+              <div className="flex items-center gap-2 mt-2">
+                <Badge text="LIVE" color="red" />
+                <Badge text="WEEKEND ONLY" color="gray" />
+              </div>
             </div>
           )}
         </section>
 
-        {/* ANNOUNCEMENTS */}
+        {/* ================= ANNOUNCEMENTS ================= */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">
             Announcements
@@ -141,7 +240,7 @@ const Badge = ({ text, color }) => (
             <p className="text-gray-500">No announcements</p>
           ) : (
             <div className="space-y-4">
-              {announcements.slice(0, 3).map(a => (
+              {announcements.slice(0, 3).map((a) => (
                 <div
                   key={a._id}
                   className="bg-white rounded-xl p-4 shadow"
