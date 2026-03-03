@@ -138,12 +138,13 @@ const Payment = () => {
 
           {/* FULL PAYMENT */}
           <div
-            className={`border rounded-2xl p-8 transition-all ${
-              selectedPlan === "full"
-                ? "border-indigo-600 shadow-lg"
-                : "border-gray-200"
-            }`}
-          >
+  onClick={() => setSelectedPlan("full")}
+  className={`border rounded-2xl p-8 cursor-pointer transition-all ${
+    selectedPlan === "full"
+      ? "border-indigo-600 shadow-lg"
+      : "border-gray-200"
+  }`}
+>
             <h3 className="text-xl font-semibold mb-2">
               Full Payment
             </h3>
@@ -184,12 +185,13 @@ const Payment = () => {
 
           {/* ADMISSION PLAN */}
           <div
-            className={`border rounded-2xl p-8 transition-all ${
-              selectedPlan === "admission"
-                ? "border-indigo-600 shadow-lg"
-                : "border-gray-200"
-            }`}
-          >
+  onClick={() => setSelectedPlan("admission")}
+  className={`border rounded-2xl p-8 cursor-pointer transition-all ${
+    selectedPlan === "admission"
+      ? "border-indigo-600 shadow-lg"
+      : "border-gray-200"
+  }`}
+>
             <h3 className="text-xl font-semibold mb-2">
               Admission Plan
             </h3>
@@ -225,12 +227,14 @@ const Payment = () => {
           </div>
 
           <button
-            onClick={handlePayment}
-            disabled={loading}
-            className="bg-green-600 text-white px-12 py-4 rounded-xl text-lg font-semibold disabled:opacity-50"
-          >
-            {loading ? "Processing..." : "Proceed to Secure Payment"}
-          </button>
+  onClick={handlePayment}
+  disabled={loading}
+  className="bg-green-600 text-white px-12 py-4 rounded-xl"
+>
+  {selectedPlan === "full"
+    ? "Pay ₹27,000 Securely"
+    : "Pay ₹4,999 Securely"}
+</button>
 
           <div className="text-sm text-gray-500 mt-6">
             🔒 100% Secure Payment via Razorpay
