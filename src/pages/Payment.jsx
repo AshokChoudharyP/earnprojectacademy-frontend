@@ -12,9 +12,6 @@ const Payment = () => {
   const [couponCode, setCouponCode] = useState("");
   const [discountPercent, setDiscountPercent] = useState(0);
 
-  // ----------------------------
-  // Amount Calculation
-  // ----------------------------
   const baseFullAmount = 27000;
   const admissionAmount = 4999;
 
@@ -26,9 +23,7 @@ const Payment = () => {
       payableAmount - (payableAmount * discountPercent) / 100;
   }
 
-  // ----------------------------
-  // Load Razorpay
-  // ----------------------------
+  // Razorpay loader
   const loadRazorpay = () =>
     new Promise((resolve) => {
       const script = document.createElement("script");
@@ -38,32 +33,24 @@ const Payment = () => {
       document.body.appendChild(script);
     });
 
-  // ----------------------------
-  // Handle Payment
-  // ----------------------------
   const handlePayment = async () => {
-    setLoading(true);
-
     try {
+      setLoading(true);
+
+      console.log("PLAN SENT:", selectedPlan);
+
+      // IMPORTANT: backend decides final amount
       const res = await API.post("/payments/create-order", {
         enrollmentId,
         plan: selectedPlan,
         couponCode,
-        amount: payableAmount,
       });
 
       const orderData = res.data;
 
-      if (!orderData?.key) {
-        toast.error("Payment configuration error");
-        setLoading(false);
-        return;
-      }
-
       const isLoaded = await loadRazorpay();
       if (!isLoaded) {
         toast.error("Razorpay SDK failed to load");
-        setLoading(false);
         return;
       }
 
@@ -93,7 +80,9 @@ const Payment = () => {
           }
         },
 
-        theme: { color: "#4f46e5" },
+        theme: {
+          color: "#4f46e5",
+        },
       };
 
       const razorpay = new window.Razorpay(options);
@@ -108,9 +97,7 @@ const Payment = () => {
     }
   };
 
-  // ----------------------------
-  // Apply Coupon (Frontend Temporary Logic)
-  // ----------------------------
+  // Coupon demo logic
   const applyCoupon = () => {
     const code = couponCode.toUpperCase();
 
@@ -123,7 +110,7 @@ const Payment = () => {
       return;
     }
 
-    toast.success(`Coupon Applied (${discountPercent}% OFF)`);
+    toast.success("Coupon applied");
   };
 
   return (
@@ -138,13 +125,13 @@ const Payment = () => {
 
           {/* FULL PAYMENT */}
           <div
-  onClick={() => setSelectedPlan("full")}
-  className={`border rounded-2xl p-8 cursor-pointer transition-all ${
-    selectedPlan === "full"
-      ? "border-indigo-600 shadow-lg"
-      : "border-gray-200"
-  }`}
->
+            onClick={() => setSelectedPlan("full")}
+            className={`border rounded-2xl p-8 cursor-pointer transition-all ${
+              selectedPlan === "full"
+                ? "border-indigo-600 shadow-lg"
+                : "border-gray-200"
+            }`}
+          >
             <h3 className="text-xl font-semibold mb-2">
               Full Payment
             </h3>
@@ -167,6 +154,7 @@ const Payment = () => {
                 onChange={(e) => setCouponCode(e.target.value)}
                 className="w-full border rounded-xl px-4 py-2"
               />
+
               <button
                 onClick={applyCoupon}
                 className="mt-2 bg-gray-800 text-white px-4 py-2 rounded-lg w-full"
@@ -174,24 +162,17 @@ const Payment = () => {
                 Apply Coupon
               </button>
             </div>
-
-            <button
-              onClick={() => setSelectedPlan("full")}
-              className="mt-6 w-full bg-indigo-600 text-white py-3 rounded-xl"
-            >
-              Select Full Payment
-            </button>
           </div>
 
           {/* ADMISSION PLAN */}
           <div
-  onClick={() => setSelectedPlan("admission")}
-  className={`border rounded-2xl p-8 cursor-pointer transition-all ${
-    selectedPlan === "admission"
-      ? "border-indigo-600 shadow-lg"
-      : "border-gray-200"
-  }`}
->
+            onClick={() => setSelectedPlan("admission")}
+            className={`border rounded-2xl p-8 cursor-pointer transition-all ${
+              selectedPlan === "admission"
+                ? "border-indigo-600 shadow-lg"
+                : "border-gray-200"
+            }`}
+          >
             <h3 className="text-xl font-semibold mb-2">
               Admission Plan
             </h3>
@@ -201,7 +182,7 @@ const Payment = () => {
             </p>
 
             <p className="text-sm text-gray-500 mt-1">
-              Remaining ₹22,000 within 3 days
+              Remaining ₹22,000 within 30 days
             </p>
 
             <ul className="mt-4 space-y-2 text-gray-600 text-sm">
@@ -209,17 +190,10 @@ const Payment = () => {
               <li>✔ EMI eligible</li>
               <li>✔ Balance reminder</li>
             </ul>
-
-            <button
-              onClick={() => setSelectedPlan("admission")}
-              className="mt-6 w-full bg-indigo-600 text-white py-3 rounded-xl"
-            >
-              Select Admission Plan
-            </button>
           </div>
         </div>
 
-        {/* FINAL PAYMENT SUMMARY */}
+        {/* SUMMARY */}
         <div className="mt-12 text-center">
 
           <div className="text-lg font-semibold mb-4">
@@ -227,19 +201,20 @@ const Payment = () => {
           </div>
 
           <button
-  onClick={handlePayment}
-  disabled={loading}
-  className="bg-green-600 text-white px-12 py-4 rounded-xl"
->
-  {selectedPlan === "full"
-    ? "Pay ₹27,000 Securely"
-    : "Pay ₹4,999 Securely"}
-</button>
+            onClick={handlePayment}
+            disabled={loading}
+            className="bg-green-600 text-white px-12 py-4 rounded-xl"
+          >
+            {selectedPlan === "full"
+              ? "Pay ₹27,000 Securely"
+              : "Pay ₹4,999 Securely"}
+          </button>
 
           <div className="text-sm text-gray-500 mt-6">
             🔒 100% Secure Payment via Razorpay
           </div>
         </div>
+
       </div>
     </div>
   );
