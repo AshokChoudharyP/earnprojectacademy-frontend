@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RoleBasedRoute from "./components/RoleBasedRoute";
 import AdminRoute from "./routes/AdminRoute";
-
+import PaymentDashboard from "./pages/paymentDashboard";
 /* 🔥 Lazy Loaded Pages */
 const Home = React.lazy(() => import("./pages/Home"));
 const About = React.lazy(() => import("./pages/About"));
@@ -165,7 +165,10 @@ function App() {
 
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
-
+             <Route
+            path="/payment-dashboard/:enrollmentId"
+               element={<PaymentDashboard />}
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
