@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RoleBasedRoute from "./components/RoleBasedRoute";
 import AdminRoute from "./routes/AdminRoute";
-import PaymentDashboard from "./pages/paymentDashboard";
+import PaymentDashboard from "./pages/PaymentDashboard";
 /* 🔥 Lazy Loaded Pages */
 const Home = React.lazy(() => import("./pages/Home"));
 const About = React.lazy(() => import("./pages/About"));
