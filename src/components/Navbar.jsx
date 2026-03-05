@@ -38,10 +38,10 @@ const Navbar = () => {
       <img
         src={logo}
         alt="EarnProjectAcademy"
-        className="h-10 w-auto"
+        className="h-12 w-auto"
       />
     </nav>
-          <span className="text-2xl font-extrabold tracking-tight text-gray-900 group-hover:text-indigo-600">
+          <span className="text-xl font-extrabold tracking-tight text-gray-900 group-hover:text-indigo-600">
             EarnProjectAcademy
           </span>
         </Link>
