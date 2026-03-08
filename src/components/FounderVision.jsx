@@ -13,8 +13,7 @@ const FounderVision = () => {
         {/* RIGHT: TEXT */}
         <div>
           <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-slate-900">
-            Founder’s Vision At EarnProjectAcademy is simple yet
-             powerful — to help people turn their skills into real earning opportunities.
+            Founder’s Vision 
           </h2>
 
           <div className="space-y-5 text-slate-700 leading-relaxed">
@@ -45,7 +44,7 @@ const FounderVision = () => {
             individuals who are confident, independent, and capable of creating 
             their own earning opportunities.
             The future of work is flexible, skill-driven, and global.
-            
+
              Our vision is to make sure that every learner is ready to succeed in this new economy.  
             </p>
 
