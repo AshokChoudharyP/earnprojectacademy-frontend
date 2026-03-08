@@ -8,11 +8,6 @@ const VisionMission = () => {
          <div className="bg-white p-8 rounded-xl shadow">
             <h3 className="text-xl font-semibold mb-4">Our Team</h3>
             <p className="text-slate-600">
-             The long-term vision of earnprojectacademy is to build 
-             a global community of skilled professionals who can earn independently
-             through digital opportunities, and to create a sustainable ecosystem
-              where learning is directly linked to earning potential.
-
              We want to empower people so they are not dependent only on traditional jobs,
              but can create multiple income streams through freelancing, remote
              projects, and online work.
