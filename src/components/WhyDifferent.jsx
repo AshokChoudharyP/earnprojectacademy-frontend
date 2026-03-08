@@ -8,8 +8,21 @@ const WhyDifferent = () => {
         </h2>
 
         <p className="text-center text-slate-600 max-w-2xl mx-auto mb-14">
-          Most online courses focus on content delivery.
-          We focus on professional readiness.
+         Many platforms teach skills like digital marketing, design, web development, 
+         coding, content writing, data tools, AI tools, and automation and their focus mainly on teaching skills.
+
+         Earnprojectacademy focuseson earning from those skills.
+
+         Our training covers:
+         .Freelancing platfrom profile creation
+         .protfolio building
+         .Proposal & cover letter writing
+         .Client communication
+         .Project delivery process
+         .Strategies to get the first freelancing projcet
+
+         This practical approach helps learners move from Learning - earning. 
+
         </p>
 
         <div className="grid md:grid-cols-3 gap-10">

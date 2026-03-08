@@ -11,7 +11,7 @@ const FutureReady = () => {
         <p className="text-slate-600 max-w-3xl mx-auto mb-14">
           Mentor-led programs designed to help skilled professionals and students
           build sustainable freelance income through real-world execution,
-          professional communication, and ethical practices.
+          professional communication, and real world practices.
         </p>
 
         <div className="grid md:grid-cols-3 gap-10 text-left">
@@ -21,7 +21,7 @@ const FutureReady = () => {
               Career-Relevant Skills
             </h3>
             <p className="text-slate-600">
-              Learn skills aligned with current client expectations and market demand,
+              Learn skills aligned with current client expect ations and market demand,
               not outdated theory.
             </p>
           </div>

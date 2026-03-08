@@ -16,7 +16,7 @@ const CoursesPreview = () => {
 
         <div className="max-w-3xl mx-auto border rounded-xl p-8">
           <h3 className="text-2xl font-semibold mb-4">
-            Freelance Income Accelerator™
+            Freelance Income Accelerator
           </h3>
 
           <p className="text-slate-600 mb-6">

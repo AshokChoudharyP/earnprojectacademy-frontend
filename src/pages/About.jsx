@@ -12,7 +12,7 @@ const About = () => {
             About EarnProjectAcademy
           </h1>
           <p className="text-lg md:text-xl text-gray-100">
-            Building Professionals, Not Promises.
+            Empowering Individuals to Learn Skills, Build Projects, and Create Freelance Income.
           </p>
         </div>
       </section>
@@ -23,10 +23,15 @@ const About = () => {
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
           <p className="text-gray-600 leading-relaxed text-lg">
-            EarnProjectAcademy was founded with a simple belief —
-            education should build real capability, not false hope.
-            We focus on structured learning, professional standards,
-            and long-term growth in freelancing and digital careers.
+            EarnProjectAcademy mission is to guide individuals step-by-step from
+            identifying their skills to creating powerful freelancing profiles,
+            writing winning proposals, and ultimately securing their first projects 
+            and clients. We focus on practical, real-world training that helps learners
+            build confidence, clarity, and a repeatable process to succeed in the freelancing ecosystem.
+            we Believe that anyone with the right guidance and strategy can build a 
+            sustainable freelance income and we are committed to providing that guidance
+            through our structured, mentor-led programs.
+
           </p>
         </div>
       </section>
@@ -47,7 +52,7 @@ const About = () => {
       </div>
 
       <div>
-        <h3 className="text-4xl font-bold text-indigo-600">4.8★</h3>
+        <h3 className="text-4xl font-bold text-indigo-600">5.0★</h3>
         <p className="text-gray-600 mt-2">Average Rating</p>
       </div>
 
@@ -60,21 +65,30 @@ const About = () => {
   </section>
 </AnimatedSection>
 
-      {/* OUR PHILOSOPHY */}
+      {/* vision */}
         <AnimatedSection>
       <section className="bg-white py-16 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h2 className="text-3xl font-bold mb-6">
-              Our Philosophy
+             our vision
             </h2>
-            <ul className="space-y-4 text-gray-600">
-              <li>✔ No guaranteed income claims</li>
-              <li>✔ No shortcuts or overnight success</li>
-              <li>✔ Structured, mentor-led learning</li>
-              <li>✔ Real client-based execution training</li>
-              <li>✔ Long-term sustainable career building</li>
-            </ul>
+            <p className="text-gray-600 leading-relaxed text-lg">
+              EarnprojectAcademy is an online learning platform 
+              designed to help students and working professionals learn 
+              how to convert their skills into real income through freelancing
+              and project-based work.
+
+              Unlike traditional courses that only teach theory,
+              our programs focus on practical steps such as creating
+              freelancing profiles, writing proposals, building portfolios, and securing first client project.
+
+             Our goal is to help people build side income or full-time 
+             freelance careers in the growing digital economy.
+
+             
+            </p>
+
           </div>
 
           <div className="bg-white/80 backdrop-blur-lg p-8 rounded-2xl shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
@@ -91,6 +105,7 @@ const About = () => {
         </div>
       </section>
       </AnimatedSection>
+
 
       {/* MENTOR SECTION */}
       <AnimatedSection>
@@ -128,10 +143,16 @@ const About = () => {
             Our Commitment
           </h2>
           <p className="text-gray-600 text-lg leading-relaxed">
-            We believe in transparent, ethical education.
-            We do not promise guaranteed income or unrealistic results.
-            We focus on building strong foundations so that learners
-            can grow confidently in the freelancing ecosystem.
+            At EarnProjectAcademy, our commitment is to help 
+            students and working professionals learn in-demand
+            digital skills, build real projects, and start earning
+            through freelancing. We provide practical training, 
+            portfolio building, and step-by-step guidance to help
+            learners create strong profiles and get projects on 
+            freelancing platforms like Upwork and Fiverr.
+            Our mission is to bridge the gap between skill learning
+            and real income opportunities, empowering individuals 
+            to build a sustainable freelance career and side income online. 🚀
           </p>
         </div>
       </section>

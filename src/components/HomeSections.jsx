@@ -27,6 +27,15 @@ const HomeSections = () => {
           <h2 className="text-2xl font-semibold text-center text-indigo-600 mb-10">
             Why Choose EarnProjectAcademy?
           </h2>
+          <p>
+            Many people learn skills like digital marketing, design, webdevelopment, mobile app development,
+            coding, content writing, data tools, AI tools, and automation — but still struggle to earn from them.
+
+            The biggest problem is not learning the skill- it is getting the first project and finding job and clients.
+
+            EarnProjectAcademy was created to solve this problem by teaching how to get projects step-by-step, 
+            from profile creation to client communicationand project delivery.
+          </p>
           <div className="grid md:grid-cols-2 gap-6">
             {[
               "Training based on real freelancing platform requirements",
@@ -111,7 +120,7 @@ const HomeSections = () => {
     <div className="grid md:grid-cols-2 gap-6">
       {[
         "Learn skills clients are actively paying for",
-        "Build real portfolios, not fake certificates",
+        "Build real portfolios with client-style projects",
         "Platform-specific earning strategies",
         "Long-term freelancing & remote career guidance",
       ].map((item, i) => (

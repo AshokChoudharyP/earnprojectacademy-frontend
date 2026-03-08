@@ -36,11 +36,11 @@ const handleEnrollClick = () => {
         <div className="max-w-6xl mx-auto text-center">
 
           <span className="inline-block bg-yellow-400 text-black text-xs px-3 py-1 rounded-full mb-6 font-semibold">
-            Only 25 Seats Left
+            Only 10 Seats Left
           </span>
 
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Freelance Income Accelerator™
+            Freelance Income Accelerator
           </h1>
 
           <Countdown />
@@ -92,7 +92,7 @@ const handleEnrollClick = () => {
             </div>
 
             <div>
-              <h3 className="text-4xl font-bold text-indigo-600">4.8★</h3>
+              <h3 className="text-4xl font-bold text-indigo-600">5.0★</h3>
               <p className="text-gray-600 mt-2">Student Rating</p>
             </div>
 
@@ -114,7 +114,8 @@ const handleEnrollClick = () => {
             <p className="text-gray-600 leading-relaxed">
               A six-month professional training program designed to help
               skilled professionals and students enter freelancing with clarity,
-              confidence, and industry-aligned standards.
+              confidence, and industry-aligned standards.Gain practical guidance to secure projects from freelancing platforms,
+               build a strong profile, and execute your first project successfully.
             </p>
           </div>
 
@@ -125,7 +126,7 @@ const handleEnrollClick = () => {
               <li>✔ 60+ Hours Live Classes</li>
               <li>✔ Weekend Sessions</li>
               <li>✔ 4 Career Assistance Sessions</li>
-              <li>✔ Mentor Support</li>
+              <li>✔ 1:1 Mentor Support</li>
             </ul>
           </div>
 
@@ -182,11 +183,11 @@ const handleEnrollClick = () => {
             </p>
 
             <p className="text-sm text-gray-500">
-              Includes all live sessions, mentor guidance & support.
+              Includes all live sessions, mentor guidance & 24*7 support.
             </p>
 
             <p className="text-yellow-500 text-lg mt-4">
-              ★★★★★ 4.8/5 Student Satisfaction
+              ★★★★★ 5.0/5 Student Satisfaction
             </p>
           </div>
         </div>
