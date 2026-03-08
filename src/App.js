@@ -57,7 +57,7 @@ function App() {
 
             <Route path="/payment/:enrollmentId" element={<Payment />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
-              <Route path="/terms-conditions" element={<TermsConditions />} />
+              <Route path="/terms-and-conditions" element={<TermsConditions />} />
               <Route path="/program-policy" element={<ProgramPolicy />} />
               <Route path="/referral-program" element={<ReferralProgram />} />
               <Route path="/refund-policy" element={<RefundPolicy />} />
