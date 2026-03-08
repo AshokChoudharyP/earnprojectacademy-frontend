@@ -4,7 +4,11 @@ import React, { Suspense } from "react";
 import ScrollProgress from "./components/common/ScrollProgress";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
+import TermsConditions from "./pages/TermsConditions";
+import ProgramPolicy from "./pages/ProgramPolicy";
+import ReferralProgram from "./pages/ReferralProgram";
+import RefundPolicy from "./pages/RefundPolicy";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RoleBasedRoute from "./components/RoleBasedRoute";
 import AdminRoute from "./routes/AdminRoute";
@@ -53,7 +57,11 @@ function App() {
 
             <Route path="/payment/:enrollmentId" element={<Payment />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
-
+              <Route path="/terms-conditions" element={<TermsConditions />} />
+              <Route path="/program-policy" element={<ProgramPolicy />} />
+              <Route path="/referral-program" element={<ReferralProgram />} />
+              <Route path="/refund-policy" element={<RefundPolicy />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             {/* 🔐 Protected Enroll */}
             <Route
               path="/enroll"
@@ -162,7 +170,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
+ 
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
              <Route

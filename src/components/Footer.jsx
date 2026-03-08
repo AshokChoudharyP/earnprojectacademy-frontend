@@ -1,72 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png"; // adjust path if needed
+
 
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-gray-900 to-black text-gray-300 pt-16">
 
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-5 gap-10">
 
         {/* Brand */}
         <div>
-          <div className="flex items-center gap-3 mb-4">
-            <img src={logo} alt="logo" className="h-10 w-auto" />
-            <h3 className="text-xl font-bold text-white">
-              EarnProject<span className="text-indigo-400">Academy</span>
-            </h3>
-          </div>
+          <h3 className="text-xl font-bold text-white mb-4">
+            EarnProject<span className="text-indigo-400">Academy</span>
+          </h3>
 
           <p className="text-sm leading-relaxed text-gray-400">
-            Learn in-demand skills, build real freelancing careers, and
-            create sustainable income streams with practical,
-            mentor-led programs.
+            EarnProjectAcademy is an ed-tech platform focused on practical
+            learning, freelancing, and building real-world income skills
+            through mentor-led programs.
           </p>
-
-          {/* Social Icons */}
-          <div className="flex gap-4 mt-6">
-            <button href="#" className="hover:text-indigo-400 transition duration-300">
-              🌐
-            </button>
-            <button href="#" className="hover:text-indigo-400 transition duration-300">
-              📘
-            </button>
-            <button href="#" className="hover:text-indigo-400 transition duration-300">
-              📸
-            </button>
-            <button href="#" className="hover:text-indigo-400 transition duration-300">
-              💼
-            </button>
-          </div>
-        </div>
-
-        {/* Programs */}
-        <div>
-          <h4 className="text-lg font-semibold text-white mb-4">
-            Programs
-          </h4>
-          <ul className="space-y-3 text-sm">
-            <li>
-              <Link to="/courses" className="hover:text-white transition duration-300">
-                Freelancing Basics
-              </Link>
-            </li>
-            <li>
-              <Link to="/courses" className="hover:text-white transition duration-300">
-                Web Development
-              </Link>
-            </li>
-            <li>
-              <Link to="/courses" className="hover:text-white transition duration-300">
-                Digital Marketing
-              </Link>
-            </li>
-            <li>
-              <Link to="/courses" className="hover:text-white transition duration-300">
-                AI & Automation
-              </Link>
-            </li>
-          </ul>
         </div>
 
         {/* Company */}
@@ -74,66 +26,166 @@ const Footer = () => {
           <h4 className="text-lg font-semibold text-white mb-4">
             Company
           </h4>
+
           <ul className="space-y-3 text-sm">
+
             <li>
-              <Link to="/about" className="hover:text-white transition duration-300">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className="hover:text-white transition duration-300">
-                Contact Us
-              </Link>
-            </li>
-            <li>
-              <Link to="/privacy" className="hover:text-white transition duration-300">
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link to="/terms" className="hover:text-white transition duration-300">
+              <Link to="/terms-and-conditions" className="hover:text-white">
                 Terms & Conditions
               </Link>
             </li>
-          </ul>
-        </div>
 
-        {/* Support */}
-        <div>
-          <h4 className="text-lg font-semibold text-white mb-4">
-            Support
-          </h4>
-          <ul className="space-y-3 text-sm">
             <li>
-              <Link to="/faq" className="hover:text-white transition duration-300">
-                FAQs
+              <Link to="/program-policy" className="hover:text-white">
+                Program Policy
               </Link>
             </li>
+
             <li>
-              <Link to="/refund" className="hover:text-white transition duration-300">
+              <Link to="/referral-program" className="hover:text-white">
+                Referral Policy
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/refund-policy" className="hover:text-white">
                 Refund Policy
               </Link>
             </li>
+
             <li>
-              <Link to="/help" className="hover:text-white transition duration-300">
-                Help Center
+              <Link to="/privacy-policy" className="hover:text-white">
+                Privacy Policy
               </Link>
             </li>
+
           </ul>
+        </div>
+
+        {/* Courses */}
+        <div>
+          <h4 className="text-lg font-semibold text-white mb-4">
+            Courses
+          </h4>
+
+          <ul className="space-y-3 text-sm">
+
+            <li>
+              <Link to="/courses" className="hover:text-white">
+                FreelancingAccelerate
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/courses" className="hover:text-white">
+                Freelancing Mastery
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/courses" className="hover:text-white">
+                Digital Marketing
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/courses" className="hover:text-white">
+                AI Tools & Automation
+              </Link>
+            </li>
+
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h4 className="text-lg font-semibold text-white mb-4">
+            Contact Us
+          </h4>
+
+          <ul className="space-y-3 text-sm">
+
+            <li>📧 info@earnprojectacademy.com</li>
+
+            <li>📞 +91 7428834165</li>
+
+            <li>📍 India</li>
+
+          </ul>
+        </div>
+
+        {/* Social */}
+        <div>
+          <h4 className="text-lg font-semibold text-white mb-4">
+            Follow Us
+          </h4>
+
+         <div className="flex gap-4 text-xl">
+
+  {/* Instagram */}
+  <a 
+    href="https://www.instagram.com/earn.projectacademy/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-indigo-400"
+  >
+    📸
+  </a>
+
+  {/* YouTube */}
+  <a 
+    href="https://www.youtube.com/channel/UCZLgHOMzA3F-1mHqq7LhxKg"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-indigo-400"
+  >
+    ▶️
+  </a>
+
+  {/* LinkedIn */}
+  <a 
+    href="https://www.linkedin.com/company/earnprojectacademy-learning/posts/?feedView=all"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-indigo-400"
+  >
+    💼
+  </a>
+
+  {/* Facebook */}
+  <a 
+    href="https://www.facebook.com/search/top?q=earnprojectacademy"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-indigo-400"
+  >
+    📘
+  </a>
+
+  {/* X (Twitter) */}
+  <a 
+    href="https://x.com/earnprojec19364"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-indigo-400"
+  >
+    ✖
+  </a>
+
+</div>
         </div>
 
       </div>
 
-      {/* Bottom bar */}
+       {/* Bottom */}
       <div className="border-t border-gray-800 mt-12 py-6">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p>
-            © {new Date().getFullYear()} EarnProjectAcademy. All rights reserved.
-          </p>
-          <p className="mt-2 md:mt-0">
-            Built for freelancers • Powered by real skills
-          </p>
+
+        <div className="max-w-7xl mx-auto px-6 text-center text-sm text-gray-400">
+
+          © {new Date().getFullYear()} EarnProjectAcademy. All Rights Reserved.
+
         </div>
+
       </div>
 
     </footer>
