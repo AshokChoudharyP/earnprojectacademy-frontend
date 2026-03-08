@@ -1,3 +1,4 @@
+import founder from "../assets/founder.png";
 const FounderVision = () => {
   return (
     <section className="py-24 bg-white">
@@ -6,7 +7,11 @@ const FounderVision = () => {
         {/* LEFT: IMAGE / VISUAL */}
         <div className="flex justify-center">
           <div className="w-72 h-72 rounded-2xl bg-slate-200 flex items-center justify-center text-slate-500">
-            Founder Image
+            <img
+        src={founder}
+        alt="Founder of EarnProjectAcademy"
+        className="w-72 h-72 object-cover rounded-xl shadow-lg"
+      />
           </div>
         </div>
 
