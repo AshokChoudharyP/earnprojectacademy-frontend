@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "../components/common/AnimatedSection";
-
+import { Helmet } from "react-helmet";
 const Contact = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
-
+      <Helmet>
+        <title>Contact | EarnProjectAcademy</title>
+        <meta
+          name="description"
+          content="Contact EarnProjectAcademy for freelancing and digital skills training."
+        />
+      </Helmet>
       {/* ================= HERO ================= */}
       <section className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-24 px-6 text-center">
         <motion.div

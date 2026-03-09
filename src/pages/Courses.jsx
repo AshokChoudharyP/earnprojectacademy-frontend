@@ -31,7 +31,7 @@ const Courses = () => {
   return (
     <section className="bg-gray-50 py-20">
       <Helmet>
-        <title>Freelancing & MERN Stack Courses | EarnProjectAcademy</title>
+        <title>Freelancing & DigitalSkills Courses | EarnProjectAcademy</title>
         <meta
           name="description"
           content="Explore career-focused freelancing and web development courses designed to help you build income-ready skills."

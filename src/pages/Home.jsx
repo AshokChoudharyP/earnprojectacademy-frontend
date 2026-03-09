@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <>
     <Helmet>
-  <title>EarnProjectAcademy | Learn Freelancing </title>
+  <title>EarnProjectAcademy | Learn Freelancing & Build Real Income</title>
   <meta
     name="description"
     content="Learn freelancing, build high-income skills, and get your first client. Structured training, real projects & guidance. Start your freelance career today!"

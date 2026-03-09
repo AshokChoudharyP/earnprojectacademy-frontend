@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 import AnimatedSection from "../components/common/AnimatedSection";
-
+import { Helmet } from "react-helmet";
 const About = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
-
+      <Helmet>
+        <title>About EarnProjectAcademy | Our Mission</title>
+        <meta
+          name="description"
+          content="Contact EarnProjectAcademy for freelancing and digital skills training."
+        />
+      </Helmet>
       {/* HERO SECTION */}
       <section className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20 px-6 text-center">
         <div className="max-w-4xl mx-auto">

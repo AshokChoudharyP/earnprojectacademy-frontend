@@ -6,7 +6,7 @@ import TestimonialSlider from "../components/course/TestimonialSlider";
 import FAQ from "../components/course/FAQ";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-
+import { Helmet } from "react-helmet";
 
 const FreelanceAccelerator = () => {
 const navigate = useNavigate();
@@ -26,7 +26,24 @@ const handleEnrollClick = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen">
+     <Helmet>
+        <title>Freelance Income Accelerator | EarnProjectAcademy</title>
 
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Freelance Income Accelerator",
+            "description":
+              "A structured, mentor-led program to build sustainable freelance income.",
+            "provider": {
+              "@type": "Organization",
+              "name": "EarnProjectAcademy",
+              "sameAs": "https://earnprojectacademy.com"
+            }
+          })}
+        </script>
+      </Helmet>
       {/* ================= HERO SECTION ================= */}
       <motion.section
         style={{ y }}
