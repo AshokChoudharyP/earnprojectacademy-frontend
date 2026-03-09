@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import logo from "../assets/logo.png"
+
 
 
 
@@ -36,10 +36,10 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-2 group">
            <nav className="...">
       <img
-        src={logo}
-        alt="EarnProjectAcademy"
-        className="h-12 w-auto"
-      />
+  src="/logo.png"
+  alt="EarnProjectAcademy Logo"
+  className="h-10"
+/>
     </nav>
           <span className="text-xl font-extrabold tracking-tight text-gray-900 group-hover:text-indigo-600">
             EarnProjectAcademy
